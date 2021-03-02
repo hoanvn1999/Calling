@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User 2</title>
+    <title>Client</title>
 
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <style>
@@ -15,6 +15,7 @@
 
         video {
             background: #dee;
+            display: none;
         }
 
         #localVideo {
@@ -48,14 +49,8 @@
             <div class="col-12">
             <div class="jumbotron">
                 <div class="container">
-                    <h2>Video call Demo - Em Linh</h2>
-                    <p>By <a href="https://developer.stringee.com/">Hoan Glad</a></p>
-                    <div id="incoming-call-notice" style="display: none;">
-                        <div class="spinner-grow text-primary" role="status"  >
-                            <span class="sr-only">Incoming call...</span>
-                        </div>
-                        <h3>Incoming call...</h3>
-                    </div>
+                    <h2>Video call Demo</h2>
+                    <p>By <a href="https://developer.stringee.com/">stringee.com</a></p>
                 </div>
                 
             </div>
@@ -67,6 +62,16 @@
                 
             </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <select class="form-control" id="client_type">
+                    <option value="new">I am New</option>
+                    <option value="vip">I am VIP</option>
+
+                </select>
+            </div>
         </div>
 
         <div class="row">
@@ -89,9 +94,26 @@
 
 
     <script>
-        var token = 'eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS3U0UlpSc1J6WEhHTFh2ajBRaFlvbHBXRGdtd1JXTlF6LTE2MTQ2OTQyNDEiLCJpc3MiOiJTS3U0UlpSc1J6WEhHTFh2ajBRaFlvbHBXRGdtd1JXTlF6IiwiZXhwIjoxNjE0Njk3ODQxLCJ1c2VySWQiOiJlbSJ9.T3JfkQj_E_pNjx7rYyJ8STYUqj-r5FFAzz0atTinymY';
-        var callerId = 'em';
-        var calleeId = 'anh';
+        var token = 'eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS0NFOVhPbkwybk1NenFQMnJZVjVrUjFJSFhKa2lpTHotMTU4NTA2NTc5NiIsImlzcyI6IlNLQ0U5WE9uTDJuTU16cVAycllWNWtSMUlIWEpraWlMeiIsImV4cCI6MTU4NzY1Nzc5NiwidXNlcklkIjoicmVndWxhcl9jbGllbnQifQ.rVvNqXqgbO1QsVvSHs2wzLJpQbnGgdNmv-5uP_1jHCA';
+        var callerId = 'regular_client';
+        var calleeId = 'stringee';
+
+        $(function(){
+            $('#client_type').on('change', function(){
+                if ($(this).val() === 'vip')
+                {
+                    console.log('calling as vip');
+                    callerId = 'vip_client';
+                    token = 'eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS0NFOVhPbkwybk1NenFQMnJZVjVrUjFJSFhKa2lpTHotMTU4NTA2NTg4MCIsImlzcyI6IlNLQ0U5WE9uTDJuTU16cVAycllWNWtSMUlIWEpraWlMeiIsImV4cCI6MTU4NzY1Nzg4MCwidXNlcklkIjoidmlwX2NsaWVudCJ9.Dgx-9xgmnTKLNx7Ws6VEMZ7ppRumAXFeXowqBj9OmE0';
+                } else
+                {
+                    console.log('calling as regular');
+                    callerId = 'regular_client';
+                    token = 'eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS0NFOVhPbkwybk1NenFQMnJZVjVrUjFJSFhKa2lpTHotMTU4NTA2NTc5NiIsImlzcyI6IlNLQ0U5WE9uTDJuTU16cVAycllWNWtSMUlIWEpraWlMeiIsImV4cCI6MTU4NzY1Nzc5NiwidXNlcklkIjoicmVndWxhcl9jbGllbnQifQ.rVvNqXqgbO1QsVvSHs2wzLJpQbnGgdNmv-5uP_1jHCA';
+                }
+            });
+            
+        });
     </script>
 
 
